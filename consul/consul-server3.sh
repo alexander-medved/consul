@@ -2,7 +2,7 @@
 docker stop {node0,agent0}
 docker rm {node0,agent0}
 echo "==== creating encryption key ===="
-KEY="zCawwRq6P/NTUNX1j3HMeQ=="
+KEY="z*"
 export HOST_IP=$(ifconfig eno2 | grep 'inet ' |  cut -d: -f2 | awk '{ print $2 }')
 export DOCKER_BRIDGE_IP=$(ifconfig docker0 | grep 'inet ' |  cut -d: -f2 | awk '{ print $2 }')
 
@@ -13,8 +13,8 @@ docker run -d -h $HOSTNAME --name=node0 -v /mnt:/data \
         -p $HOST_IP:20526:8301/tcp \
 	consul agent -server -node node0 -encrypt $KEY -advertise $HOST_IP \
         -advertise-wan=$HOST_IP \
-        -retry-join-wan=46.39.225.69:20526 \
-        -retry-join-wan=46.254.18.198:20526 \
+        -retry-join-wan=*.*.*.*:20526 \
+        -retry-join-wan=*.*.*.*:20526 \
         -bootstrap 
 export NODE0_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' node0)
 

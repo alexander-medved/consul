@@ -7,7 +7,7 @@ SERVER_COUNT=3
 DOCKER_IP=$(ifconfig eno2 | grep 'inet ' |  cut -d: -f2 | awk '{ print $2 }')
 
 echo "==== creating encryption key ===="
-KEY="zCawwRq6P/NTUNX1j3HMeQ=="
+KEY="z*"
 
 echo "==== starting servers ===="
 docker run -d --name=consul0 \
@@ -26,8 +26,8 @@ docker run -d --name=consul0 \
 	-datacenter=office-msk \
 	-encrypt=$KEY \
         -advertise-wan=$DOCKER_IP \
-	-retry-join-wan=46.39.225.69:20526 \
-	-retry-join-wan=46.254.18.198:20526 \
+	-retry-join-wan=*.*.*.*:20526 \
+	-retry-join-wan=*.*.*.*:20526 \
 	-bootstrap \
 	-config-dir=/consul/config 
 
@@ -62,8 +62,6 @@ docker run -d --name=agent0 \
 	-client=0.0.0.0 \
         -advertise-wan=$DOCKER_IP \
 	-retry-join=$CONSUL0 \
-	-retry-join=46.254.18.198 \
-	-retry-join=46.39.225.69 \
 	-ui
 echo "==== pausing ===="
 sleep 2
