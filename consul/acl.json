@@ -5,7 +5,7 @@
         "encrypt": "z*"
 }
 {
-        "datacenter": "office-msk",
+        "datacenter": "office-*",
         "start_join": [
                 "*.*.*.*", "*.*.*.*"
         ],
