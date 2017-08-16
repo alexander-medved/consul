@@ -2,26 +2,26 @@
         "skip_leave_on_interrupt": true
 }
 {
-        "encrypt": "zCawwRq6P/NTUNX1j3HMeQ=="
+        "encrypt": "z*"
 }
 {
         "datacenter": "office-msk",
         "start_join": [
-                "46.39.225.69", "46.254.18.198"
+                "*.*.*.*", "*.*.*.*"
         ],
         "retry_interval": "5s",
         "retry_max": 30
 }
 {
-        "acl_datacenter": "office-msk",
+        "acl_datacenter": "office-*",
         "acl_default_policy": "allow",
         "acl_down_policy": "extend-cache",
-        "acl_agent_token": "QeM_mzexTjn7O09okMmoZSOrNTfssF4GRXCGFFqyJLM7uA2Jd-V6btnH07wf6"
+        "acl_agent_token": "*"
 }
 {
 	"node_name": "agent0",
 	"node_meta": {
-		"dc": "office-msk"
+		"dc": "office-*"
 	},
 	"raft_protocol": 3,
 	"data_dir": "/var/lib/consul",
